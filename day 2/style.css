@@ -1,0 +1,71 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color: #141414;
+  --w: calc(1vw + 1vh);
+  --transition: 1.25s cubic-bezier(.2, .5, 0,1);
+  --transition-cursor: 2s cubic-bezier(.05,.5,0,1);
+}
+@font-face {
+  font-family: Arsenal;
+  src: url("fonts/arsenal-regular.woff2");
+}
+body{
+  font-family: "Arsenal";
+    counter-reset: numbers;
+}
+.magic-list {
+  font-size: calc(var(--w) * 2);
+  padding: calc(var(--w) * 2);
+}
+.magic-list_item {
+  cursor: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: calc(var(--w) * 3) calc(var(--w) * 7);
+  border-bottom: solid rgb(0 0 0 / .06) 1px;
+}
+.magic-list:first-child {
+  border-top: solid black 1px;
+}
+.magic-list_header {
+transition: transform var(--transition);
+width: min-content;
+}
+.magic-list_item::before {
+position: absolute;
+counter-increment: numbers;
+content: "(0" counter(numbers) ")";
+transition: transform var(--transition);
+font-size: calc(var(--w));
+margin-left: calc(var(--w) * -2);
+}
+.magic-list_item:hover .magic-list_header,
+.magic-list_item:hover::before {
+
+}
+.cursor {
+  transition: transform var(--transition-cursor), height 1s ease;
+}
+.magic-list_item:hover {
+  transform: translate(-55px);
+}
+.cursor_image{
+transition: transform var(--transition-cursor);
+}
+.magic-list_item:hover .cursor_image {
+  
+}
+
+.magic-list_td {
+  vertical-align: top;
+}
+.magic-list_numbers {
+  font-size: 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
